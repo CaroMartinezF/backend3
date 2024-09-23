@@ -6,6 +6,7 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     age: { type: Number, required: true, min: 0 },
     password: { type: String, required: true },
+    pets: [String],
     cart: { type: Schema.Types.ObjectId, ref: "carts"},
     role: { type: String, enum: ["admin", "user"], default: "user" },
 },

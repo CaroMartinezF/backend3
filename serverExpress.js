@@ -13,6 +13,7 @@ import sessionRouter from "./src/routes/session-router.js"
 import userRoutes from "./src/routes/user-router.js"
 import cookieParser from "cookie-parser"
 import {initializePassport} from "./src/config/passport.config.js"
+import mockRoutes from "./src/routes/mock-router.js"
 
 initMongoDB()
 
@@ -34,6 +35,7 @@ app.use("/api/carts", cartRouter)
 app.use("/", viewsRouter)
 app.use("/api/session",sessionRouter)
 app.use("/api/users", userRoutes)
+app.use("/api/mocks", mockRoutes)
 
 //HANDLEBARS
 app.engine('handlebars', handlebars.engine())
