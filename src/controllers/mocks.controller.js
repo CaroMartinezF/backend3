@@ -16,30 +16,30 @@ class MocksClass{
         const newUsers = await createUsersMock(numUsers)
         const newPets =  createPetsMock(petUsers)
         try {
-            res.status(200).json({message: "Datos Generados!", data: await MockService.generateData(newUsers, newPets)})
+            res.status(200).json({message: "Datos generados con éxito", data: await MockService.generateData(newUsers, newPets)})
             
         } catch (error) {
-            console.log("Error en MockController -> generateData, error: ",error);
-            res.status(400).send("Error en generacion de Datos")
+            console.log("Error en MockController generateData, error: ",error);
+            res.status(400).send("Error en la generacion de datos")
         }
     }
 
     async getUsers (req, res){
         try {
-            res.status(200).json({message: "Consulta Exitosa!", data: await MockService.getUsers()})
+            res.status(200).json({message: "Consulta exitosa", data: await MockService.getUsers()})
         } catch (error) {
-            console.log("Error en MockController -> getUsers, error: ",error);
-            res.status(400).send("Error intentando Obtener Usuarios")
+            console.log("Error en MockController getUsers, error: ",error);
+            res.status(400).send("Error al obtener usuarios")
         }
         res.status(200).json()
     }
 
     async getPets (req, res){
         try {
-            res.status(200).json({message: "Consulta Exitosa!", data: await MockService.getPets()})
+            res.status(200).json({message: "Consulta exitosa", data: await MockService.getPets()})
         } catch (error) {
-            console.log("Error en MockController -> getPets, error: ",error);
-            res.status(400).send("Error intentando Obtener Pets")
+            console.log("Error en MockController getPets, error: ",error);
+            res.status(400).send("Error al obtener pets")
         }
     }
 }

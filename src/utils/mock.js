@@ -16,8 +16,7 @@ const generateUser = async () => {
         password: await createHash('coder123'),
         role: role, 
         pets: [],
-        //cart:[],
-        //_id: uuidv4(), 
+
     };
 };
 
@@ -45,7 +44,6 @@ export const createPetsMock = (cant=0)=>{
             type: faker.animal.type(),
             owner: null,
             adopted:false,
-            //_id: uuidv4()
         }
 
         petsArray.push(pet);
