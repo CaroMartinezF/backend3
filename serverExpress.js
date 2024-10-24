@@ -15,15 +15,22 @@ import cookieParser from "cookie-parser"
 import {initializePassport} from "./src/config/passport.config.js"
 import mockRoutes from "./src/routes/mock-router.js"
 
+import swaggerUI from 'swagger-ui-express'
+import swaggerJSDoc from 'swagger-jsdoc'
+import { info } from './src/docs/info.js';
+
 initMongoDB()
 
 const app = express()
 const PORT = 8080
 
+const specs = swaggerJSDoc(info)
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(`${__dirname}/public`))
 app.use(cookieParser())
+app.use('/docs',swaggerUI.serve, swaggerUI.setup(specs))
 
 initializePassport();
 app.use(passport.initialize());

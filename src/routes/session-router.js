@@ -38,7 +38,7 @@ router.post("/login", validate(authDto), passport.authenticate("login", {session
 
 router.get("/login", (req, res) => {
     res.status(401).json({
-    error: "No autorizado",
+    error: "No autorizadoo",
     });
 });
 

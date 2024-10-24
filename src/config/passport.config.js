@@ -18,13 +18,14 @@ const initializePassport = () => {
         { usernameField: "email", passReqToCallback: true },
         async (req, email, password, done) => {
             try {
-                const user = await UserModel.findOne({ email });
-
+                
+                const user = await UserModel.findOne({ email }); 
                 if (!user) {
                     return done(null, false, { message: "Usuario no encontrado" });
                 }
 
                 if (!(await comparePassword(password, user.password))) {
+
                     return done(null, false, { message: "Contraseña incorrecta" });
                 }
 
@@ -45,7 +46,7 @@ const initializePassport = () => {
             try {
                 const { first_name, last_name, age } = req.body;
     
-                const userExists = await userModel.findOne({ email });
+                const userExists = await UserModel.findOne({ email });
     
             if (userExists) {
                 return done(null, false, { message: "El usuario ya existe" });
@@ -53,7 +54,7 @@ const initializePassport = () => {
     
             const hashPassword = await createHash(password);
     
-            const user = await userModel.create({
+            const user = await UserModel.create({
                 first_name,
                 last_name,
                 email,

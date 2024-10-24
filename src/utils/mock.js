@@ -3,7 +3,7 @@ import { createHash } from "./hash.js";
 
 faker.locale = "es";
 
-const generateUser = async () => {
+export const generateUser = async () => {
     
     const random = Math.random()*10
     const role = random <= 5 ? 'user' :'admin' 
@@ -20,6 +20,20 @@ const generateUser = async () => {
     };
 };
 
+export const generateUserTest = async () => {
+    
+    const random = Math.random()*10
+    const role = random <= 5 ? 'user' :'admin' 
+    
+    return {
+        first_name: faker.person.firstName(),
+        last_name:  faker.person.lastName(),
+        age:    Math.round(random*10),
+        email: faker.internet.email(),
+        password: 'coder123',//await createHash('coder123'),
+        role: role, 
+    };
+};
 
 export const createUsersMock = async (cant = 20) => {
     try {

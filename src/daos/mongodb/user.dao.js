@@ -27,15 +27,23 @@ class UserManager{
         try {
             const user = await this.getUserByEmail(email)
             const resp = await UserModel.findByIdAndUpdate( user[0]._id, {cart: cart_id}, {new: true});
-            console.log("addcarttouser", resp);
-            console.log("user", user);
-            console.log("cartid", cart_id);
-            
             
             return resp
             
         } catch (error) {
             console.log(error);
+        }
+    }
+    //Get User By ID
+    async getUserById(id){
+        try {
+            
+            const user = await UserModel.findById(id)
+            
+            return user
+        } catch (error) {
+            console.log(error);
+            
         }
     }
 }
